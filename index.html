@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Registro</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  .form-container {
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: transform 0.3s;
+  }
+  input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="password"]:focus {
+    transform: scale(1.05);
+  }
+  input[type="number"]:focus {
+    transform: scale(1.2);
+  }
+  input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  .step {
+    display: none;
+  }
+  .step.active {
+    display: block;
+  }
+  .step-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .button-container button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .button-container button:hover {
+    background-color: #45a049;
+  }
+  .highlight-input {
+    border-color: #4CAF50;
+  }
+</style>
+</head>
+<body>
+<div class="form-container">
+  <form id="registrationForm">
+    <div class="step active" id="step1">
+      <h2 class="step-title">INFORMACION PERSONAL</h2>
+      <input type="text" name="nombre" placeholder="Nombres" required>
+      <input type="text" name="apellido" placeholder="Apellidos" required>
+      <input type="tel" name="telefono" placeholder="Teléfono" required>
+      <input type="email" name="correo" placeholder="Correo electrónico" required>
+      <div class="button-container">
+        <button type="button" onclick="nextStep()">Siguiente</button>
+      </div>
+    </div>
+    <div class="step" id="step2">
+      <h2 class="step-title">INFORMACION ADICIONAL</h2>
+      <input type="text" name="claveElector" placeholder="Clave de Elector (Máximo 18 caracteres)" maxlength="18" required>
+      <input type="number" name="cantidadEstimada" placeholder="Cantidad Estimada" required class="highlight-input">
+      <div class="button-container">
+        <button type="button" onclick="prevStep()">Anterior</button>
+        <input type="submit" value="Enviar">
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  function nextStep() {
+    document.getElementById('step1').classList.remove('active');
+    document.getElementById('step2').classList.add('active');
+  }
+
+  function prevStep() {
+    document.getElementById('step2').classList.remove('active');
+    document.getElementById('step1').classList.add('active');
+  }
+</script>
+</body>
+</html>
